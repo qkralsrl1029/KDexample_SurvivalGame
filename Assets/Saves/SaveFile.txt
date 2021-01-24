@@ -1,0 +1,1 @@
+{"playerPos":{"x":225.96656799316407,"y":6.406078815460205,"z":150.08245849609376},"playerRot":{"x":0.0,"y":166.5999755859375,"z":0.0},"inventoryArrayNum":[],"inventoryItem":[],"inventoryItemNum":[]}
