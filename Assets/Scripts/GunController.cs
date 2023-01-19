@@ -44,7 +44,6 @@ public class GunController : MonoBehaviour
 
     void Start()
     {
-        originPos = Vector3.zero;
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -183,7 +182,7 @@ public class GunController : MonoBehaviour
     private void FineSight()
     {
         isFineSightMode = !isFineSightMode;
-        currentGun.anim.SetBool("FineSightMode", isFineSightMode);
+        currentGun.anim.SetBool("FineSight", isFineSightMode);
 
         if (isFineSightMode)
         {
@@ -271,5 +270,10 @@ public class GunController : MonoBehaviour
     {
         audioSource.clip = _clip;
         audioSource.Play();
+    }
+
+    public Gun GetGun()
+    {
+        return currentGun;
     }
 }
