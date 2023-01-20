@@ -425,9 +425,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 92056989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f145d8d40ed79043beb82979cd0a0e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bb1e938d06a4104bb4848153236f5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  closeWeaponName: Pickaxe
+  isHand: 0
+  isAxe: 0
+  isPickaxe: 1
+  range: 5
+  damage: 10
+  workSpeed: 10
+  attackDelay: 1.8
+  attackDelayA: 0.8
+  attackDelayB: 0.1
+  anim: {fileID: 96386450}
 --- !u!1001 &96386449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -549,6 +560,12 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 8c908941e2081e94d8f433f26cf6bf8a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5b47cecbd64e754ab2f7619765cafa1, type: 3}
+--- !u!95 &96386450 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: a5b47cecbd64e754ab2f7619765cafa1,
+    type: 3}
+  m_PrefabInstance: {fileID: 96386449}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &100982010
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,11 +656,11 @@ GameObject:
   m_Component:
   - component: {fileID: 156405245}
   - component: {fileID: 156405252}
+  - component: {fileID: 156405248}
+  - component: {fileID: 156405247}
   - component: {fileID: 156405251}
   - component: {fileID: 156405250}
   - component: {fileID: 156405249}
-  - component: {fileID: 156405248}
-  - component: {fileID: 156405247}
   - component: {fileID: 156405246}
   m_Layer: 2
   m_Name: Holder
@@ -775,9 +792,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 156405244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f577930319bdcc24d8ca9c971061b8c2, type: 3}
+  m_Script: {fileID: 11500000, guid: e2743acb64b9c0f4580d73faa8efd761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCloseWeapon: {fileID: 92056991}
 --- !u!114 &156405248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -787,9 +805,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 156405244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a24e708d337b8440b0a17706ad8fffe, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a71f74fe142b934996dd5bf569f64d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCloseWeapon: {fileID: 631182667}
 --- !u!114 &156405249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -797,11 +816,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156405244}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4db668b6aa2001b44a0b4b171e24b3a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 5044484a107558641999f7ffa4fff567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  limitPos: {x: 0.2, y: 0.1, z: 0}
+  fineSightLimitPos: {x: 0.01, y: 0.01, z: 0}
+  smoothSway: {x: 0.05, y: 0.05, z: 0}
+  theGunController: {fileID: 156405251}
 --- !u!114 &156405250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,8 +844,14 @@ MonoBehaviour:
   - {fileID: 1828161311}
   hands:
   - {fileID: 1045704239}
+  axes:
+  - {fileID: 631182667}
+  pickaxes:
+  - {fileID: 92056991}
   theGunController: {fileID: 156405251}
   theHandController: {fileID: 156405252}
+  theAxeController: {fileID: 156405248}
+  thePickaxeController: {fileID: 156405247}
 --- !u!114 &156405251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -853,7 +882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed94f7f01bb9dbb4e9f547cb36400a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHand: {fileID: 1045704239}
+  currentCloseWeapon: {fileID: 1045704239}
 --- !u!1 &173577346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1998,6 +2027,108 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1008699639}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &398093091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5198900935144552828, guid: 6245449eaf210334f8fb906bf4d2a3a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2122701397}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &398093094
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398093091}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &437300114
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,7 +2153,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437300114}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.39, y: -0.45, z: 0}
+  m_LocalPosition: {x: 0.6, y: -0.52, z: 0.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 92056990}
@@ -2680,6 +2811,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f145d8d40ed79043beb82979cd0a0e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &631182667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631182664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb1e938d06a4104bb4848153236f5f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeWeaponName: Axe
+  isHand: 0
+  isAxe: 1
+  isPickaxe: 0
+  range: 3
+  damage: 10
+  workSpeed: 10
+  attackDelay: 1.7
+  attackDelayA: 0.5
+  attackDelayB: 0.1
+  anim: {fileID: 1566571421}
 --- !u!1 &642069391
 GameObject:
   m_ObjectHideFlags: 0
@@ -2704,7 +2858,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642069391}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.97, y: 0.09, z: 0.561}
+  m_LocalPosition: {x: -0.2, y: -0.53, z: 1.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 631182665}
@@ -3227,7 +3381,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 848526687}
   m_LocalRotation: {x: 0, y: 0.9961947, z: 0, w: 0.08715588}
-  m_LocalPosition: {x: 16, y: 1.5, z: 35}
+  m_LocalPosition: {x: 16, y: 1.52, z: 35}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 1660080179}
@@ -3248,7 +3402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 5
   runSpeed: 10
-  crouchSpeed: 2
+  crouchSpeed: 1
   jumpForce: 5
   crouchPosY: 0
   lookSensitivity: 3
@@ -4195,16 +4349,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1045704237}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12b12630467580c4fb21b0069c7572c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bb1e938d06a4104bb4848153236f5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handName: "\uB9E8\uC190"
-  range: 1
-  damage: 5
-  workSpeed: 0
-  attackDelay: 2
-  attackDelayA: 1
-  attackDelayB: 0.5
+  closeWeaponName: "\uB9E8\uC190"
+  isHand: 1
+  isAxe: 0
+  isPickaxe: 0
+  range: 3
+  damage: 10
+  workSpeed: 10
+  attackDelay: 1
+  attackDelayA: 0.5
+  attackDelayB: 0.1
   anim: {fileID: 1045704240}
 --- !u!95 &1045704240 stripped
 Animator:
@@ -16632,6 +16789,12 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 44df5c577cae43d4ba99180f3eaa6288, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 561e410fc18ccc843b24acc6182dc468, type: 3}
+--- !u!95 &1566571421 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 561e410fc18ccc843b24acc6182dc468,
+    type: 3}
+  m_PrefabInstance: {fileID: 1566571420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1569410175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18736,6 +18899,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5198900935144552825, guid: 6245449eaf210334f8fb906bf4d2a3a3,
         type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 398093094}
+    - target: {fileID: 5198900935144552825, guid: 6245449eaf210334f8fb906bf4d2a3a3,
+        type: 3}
       propertyPath: strikeSound
       value: Pickaxe_Strike
       objectReference: {fileID: 0}
@@ -18762,7 +18930,7 @@ PrefabInstance:
     - target: {fileID: 5198900935144552830, guid: 6245449eaf210334f8fb906bf4d2a3a3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.13117188
+      value: -0.358
       objectReference: {fileID: 0}
     - target: {fileID: 5198900935144552830, guid: 6245449eaf210334f8fb906bf4d2a3a3,
         type: 3}

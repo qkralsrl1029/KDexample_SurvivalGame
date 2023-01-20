@@ -56,20 +56,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 5198900935144552828}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e437d64f7424ec9438d54127941a614c, type: 3}
+  m_Script: {fileID: 11500000, guid: 24a2911d954c8ea4089eee193ef97774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 3
-  destroyTime: 5
+  destroyTime: 1
   col: {fileID: 5198900935144552831}
   go_rock: {fileID: 5198900936853683849}
   go_debris: {fileID: 5198900936650346826}
-  go_effectPrefabs: {fileID: 8770123758534047709, guid: 97c586a3c9eedae468a578aa5057c698,
+  go_effect_prefabs: {fileID: 8770123758534047709, guid: 97c586a3c9eedae468a578aa5057c698,
     type: 3}
-  rockItem: {fileID: 5072391323159916528, guid: ef6248e498f32064f812270b375e5a70,
-    type: 3}
-  strikeSound: 
-  destroySound: 
+  audioSource: {fileID: 0}
+  effect_sound: {fileID: 8300000, guid: 939970b750331394f9379f2aafff2543, type: 3}
+  effect_sound2: {fileID: 8300000, guid: 217fa5643cf00d140a10ca6286f92d55, type: 3}
 --- !u!54 &5198900936434012401
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -869,6 +868,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400052, guid: 950826d198db9da43956e0493cea96ff, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400052, guid: 950826d198db9da43956e0493cea96ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -881,6 +884,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400052, guid: 950826d198db9da43956e0493cea96ff, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400052, guid: 950826d198db9da43956e0493cea96ff, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -891,14 +898,6 @@ PrefabInstance:
     - target: {fileID: 400052, guid: 950826d198db9da43956e0493cea96ff, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400052, guid: 950826d198db9da43956e0493cea96ff, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400052, guid: 950826d198db9da43956e0493cea96ff, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400052, guid: 950826d198db9da43956e0493cea96ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1094,6 +1093,10 @@ PrefabInstance:
       value: Rock_image
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4ca5b5add3ae096409451391b6f785d6, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4ca5b5add3ae096409451391b6f785d6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1106,6 +1109,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4ca5b5add3ae096409451391b6f785d6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4ca5b5add3ae096409451391b6f785d6, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.000000021855694
       objectReference: {fileID: 0}
@@ -1116,14 +1123,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 4ca5b5add3ae096409451391b6f785d6, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 4ca5b5add3ae096409451391b6f785d6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 4ca5b5add3ae096409451391b6f785d6, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4ca5b5add3ae096409451391b6f785d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
