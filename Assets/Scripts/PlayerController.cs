@@ -18,8 +18,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float jumpForce;
 
+    // 움직임 체크 변수
+    private Vector3 lastPos;
 
     // 상태 변수
+    private bool isWalk = false;
     private bool isRun = false;
     private bool isCrouch = false;
     private bool isGround = true;
@@ -49,7 +52,8 @@ public class PlayerController : MonoBehaviour
     //필요한 컴포넌트
     [SerializeField]
     private Camera theCamera;
-
+    private GunController theGunController;
+    private Crosshair theCrosshair;
     private Rigidbody myRigid;
 
 
@@ -58,6 +62,8 @@ public class PlayerController : MonoBehaviour
     {
         capsuleCollider = GetComponent<BoxCollider>();
         myRigid = GetComponent<Rigidbody>();
+        theGunController = FindObjectOfType<GunController>();
+        theCrosshair = FindObjectOfType<Crosshair>();
         applySpeed = walkSpeed;
 
         // 초기화.
@@ -77,6 +83,7 @@ public class PlayerController : MonoBehaviour
         TryRun();
         TryCrouch();
         Move();
+        MoveCheck();
         CameraRotation();
         CharacterRotation();
 
@@ -96,6 +103,8 @@ public class PlayerController : MonoBehaviour
     private void Crouch()
     {
         isCrouch = !isCrouch;
+        theCrosshair.CrouchingAnimation(isCrouch);
+
 
         if (isCrouch)
         {
@@ -136,6 +145,7 @@ public class PlayerController : MonoBehaviour
     private void IsGround()
     {
         isGround = Physics.Raycast(transform.position, Vector3.down, capsuleCollider.bounds.extents.y + 0.1f);
+        //theCrosshair.RunningAnimation(!isGround);
     }
 
 
@@ -181,6 +191,7 @@ public class PlayerController : MonoBehaviour
             Crouch();
 
         isRun = true;
+        theCrosshair.RunningAnimation(isRun);
         applySpeed = runSpeed;
     }
 
@@ -189,6 +200,7 @@ public class PlayerController : MonoBehaviour
     private void RunningCancel()
     {
         isRun = false;
+        theCrosshair.RunningAnimation(isRun);
         applySpeed = walkSpeed;
     }
 
@@ -206,6 +218,21 @@ public class PlayerController : MonoBehaviour
         Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * applySpeed;
 
         myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
+    }
+
+    // 움직임 체크
+    private void MoveCheck()
+    {
+        if (!isRun && !isCrouch && isGround)
+        {
+            if (Vector3.Distance(lastPos, transform.position) >= 0.01f)
+                isWalk = true;
+            else
+                isWalk = false;
+
+            theCrosshair.WalkingAnimation(isWalk);
+            lastPos = transform.position;
+        }
     }
 
     // 좌우 캐릭터 회전
