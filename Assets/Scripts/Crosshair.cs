@@ -24,11 +24,13 @@ public class Crosshair : MonoBehaviour
 
     public void WalkingAnimation(bool _flag)
     {
+        WeaponManager.currentWeaponAnim.SetBool("Walk", _flag);
         animator.SetBool("isWalk", _flag);
     }
 
     public void RunningAnimation(bool _flag)
     {
+        WeaponManager.currentWeaponAnim.SetBool("Run", _flag);
         animator.SetBool("isRun", _flag);
     }
 
