@@ -77,16 +77,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        IsGround();
-        TryJump();
-        TryRun();
-        TryCrouch();
-        Move();
-        MoveCheck();
-        CameraRotation();
-        CharacterRotation();
-
+        if (GameManager.canPlayerMove)
+        {
+            IsGround();
+            TryJump();
+            TryRun();
+            TryCrouch();
+            Move();
+            MoveCheck();
+            CameraRotation();
+            CharacterRotation();
+        }
     }
 
     // 앉기 시도
