@@ -56,6 +56,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -68,6 +69,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -102,7 +104,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7840650623340853182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd995c8823be1544be9e5535f845ee2, type: 3}
+  m_Script: {fileID: 11500000, guid: ff6b08e5d3689be45ae2ee923d8607a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 9d9e4ecc8d57af340aa98b9937b3817f, type: 2}
+  item: {fileID: 11400000, guid: 4a3b34102ce0a6740aba1c6e0a65dfca, type: 2}

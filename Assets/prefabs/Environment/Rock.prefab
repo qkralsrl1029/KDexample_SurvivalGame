@@ -60,11 +60,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 3
-  destroyTime: 1
+  destroyTime: 3
   col: {fileID: 5198900935144552831}
   go_rock: {fileID: 5198900936853683849}
   go_debris: {fileID: 5198900936650346826}
   go_effect_prefabs: {fileID: 8770123758534047709, guid: 97c586a3c9eedae468a578aa5057c698,
+    type: 3}
+  go_rock_item_prefab: {fileID: 5072391323159916528, guid: ef6248e498f32064f812270b375e5a70,
     type: 3}
   strike_Sound: Pickaxe_Strike
   destroy_Sound: Rock_Destroy

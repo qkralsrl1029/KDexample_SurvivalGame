@@ -1776,6 +1776,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6167541575515318184, guid: 1e659993196339b48bd152a5d965d1d7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e659993196339b48bd152a5d965d1d7, type: 3}
 --- !u!1 &337789915
@@ -3403,10 +3408,10 @@ MonoBehaviour:
   walkSpeed: 5
   runSpeed: 10
   crouchSpeed: 1
-  jumpForce: 5
+  jumpForce: 4
   crouchPosY: 0
   lookSensitivity: 3
-  cameraRotationLimit: 45
+  cameraRotationLimit: 60
   theCamera: {fileID: 1660080176}
 --- !u!54 &848526690
 Rigidbody:
@@ -4619,7 +4624,7 @@ PrefabInstance:
     - target: {fileID: 5075836529765441100, guid: 19dc971a4ba70544589737a600c03f44,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.318828
+      value: -0.374
       objectReference: {fileID: 0}
     - target: {fileID: 5075836529765441100, guid: 19dc971a4ba70544589737a600c03f44,
         type: 3}
@@ -4803,7 +4808,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1214359318
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17392,9 +17397,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1660080175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0ddf1a8b439992448a55306e96e0ab0, type: 3}
+  m_Script: {fileID: 11500000, guid: efac4e8e6dc71314595fe12e4a662aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 5
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  actionText: {fileID: 180328432}
+  theInventory: {fileID: 2006363332}
 --- !u!81 &1660080178
 AudioListener:
   m_ObjectHideFlags: 0
@@ -18748,9 +18759,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2006363330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fd9b2dcca19f1e43b427f286653267a, type: 3}
+  m_Script: {fileID: 11500000, guid: f9d3c92f9650ddd4eadc51e19400dbdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  go_InventoryBase: {fileID: 1596179980}
+  go_SlotsParent: {fileID: 344898270}
 --- !u!1 &2095384334
 GameObject:
   m_ObjectHideFlags: 0
