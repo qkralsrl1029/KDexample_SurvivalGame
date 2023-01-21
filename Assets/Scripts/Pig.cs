@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Pig : MonoBehaviour
 {
@@ -10,9 +11,7 @@ public class Pig : MonoBehaviour
 
     [SerializeField] private float walkSpeed; // 걷기 스피드.
     [SerializeField] private float runSpeed; // 뛰기 스피드.
-    private float applySpeed;
-
-    private Vector3 direction; // 방향.
+    private Vector3 destination; // nav dest
 
 
     // 상태변수
@@ -32,6 +31,7 @@ public class Pig : MonoBehaviour
     [SerializeField] private Rigidbody rigid;
     [SerializeField] private BoxCollider boxCol;
     private AudioSource theAudio;
+    private NavMeshAgent nav;
 
     [SerializeField] private AudioClip[] sound_pig_Normal;
     [SerializeField] private AudioClip sound_pig_Hurt;
@@ -41,6 +41,7 @@ public class Pig : MonoBehaviour
     void Start()
     {
         theAudio = GetComponent<AudioSource>();
+        nav = GetComponent<NavMeshAgent>();
         currentTime = waitTime;
         isAction = true;
     }
@@ -51,7 +52,6 @@ public class Pig : MonoBehaviour
         if (!isDead)
         {
             Move();
-            Rotation();
             ElapseTime();
         }
     }
@@ -59,17 +59,11 @@ public class Pig : MonoBehaviour
     private void Move()
     {
         if (isWalking || isRunning)
-            rigid.MovePosition(transform.position + (transform.forward * applySpeed * Time.deltaTime));
+            nav.SetDestination(transform.position+ destination*3f);
+            //nav agent가 rigidbody 강제로 잠금
+            //rigid.MovePosition(transform.position + (transform.forward * applySpeed * Time.deltaTime));
     }
 
-    private void Rotation()
-    {
-        if (isWalking || isRunning)
-        {
-            Vector3 _rotation = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, direction.y, 0f), 0.01f);
-            rigid.MoveRotation(Quaternion.Euler(_rotation));
-        }
-    }
 
     private void ElapseTime()
     {
@@ -84,9 +78,10 @@ public class Pig : MonoBehaviour
     private void ReSet()
     {
         isWalking = false; isRunning = false; isAction = true;
-        applySpeed = walkSpeed;
+        nav.speed = walkSpeed;
+        nav.ResetPath();
         anim.SetBool("Walk", isWalking); anim.SetBool("Run", isRunning);
-        direction.Set(0f, Random.Range(0f, 360f), 0f);
+        destination.Set(Random.Range(-0.2f,0.2f),0f,Random.Range(0.5f,1f));
         RandomAction();
     }
 
@@ -128,17 +123,17 @@ public class Pig : MonoBehaviour
         isWalking = true;
         anim.SetBool("Walk", isWalking);
         currentTime = walkTime;
-        applySpeed = walkSpeed;
+        nav.speed = walkSpeed;
         Debug.Log("걷기");
     }
 
     private void Run(Vector3 _targetPos)
     {
-        direction = Quaternion.LookRotation(transform.position - _targetPos).eulerAngles;
+        destination = new Vector3(transform.position.x - _targetPos.x, 0f, transform.position.z - _targetPos.z).normalized;
         currentTime = runTime;
         isWalking = false;
         isRunning = true;
-        applySpeed = runSpeed;
+        nav.speed = runSpeed;
         anim.SetBool("Run", isRunning);
     }
 
@@ -166,6 +161,7 @@ public class Pig : MonoBehaviour
         isWalking = false;
         isRunning = false;
         isDead = true;
+        nav.ResetPath();
         anim.SetTrigger("Dead");
     }
 
