@@ -327,6 +327,12 @@ Transform:
   m_Father: {fileID: 1762250761}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &65368368 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 96f82c91f0fbab446a80083fab12ba96,
+    type: 3}
+  m_PrefabInstance: {fileID: 1156933452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &82627841
 GameObject:
   m_ObjectHideFlags: 0
@@ -5042,7 +5048,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 92.5, y: 83.59}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1302798251
@@ -10344,9 +10350,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1401540850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08cdc539ee84a7c46be7cd0963b2f942, type: 3}
+  m_Script: {fileID: 11500000, guid: b8d3a428b01459146bc7ca2ee5cbef52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animalName: Pig
+  hp: 2
+  walkSpeed: 1
+  runSpeed: 3
+  walkTime: 3
+  waitTime: 3
+  runTime: 3
+  anim: {fileID: 65368368}
+  rigid: {fileID: 1401540856}
+  boxCol: {fileID: 1401540855}
+  sound_pig_Normal:
+  - {fileID: 8300000, guid: df17200091b444949a443ef5fcbd5121, type: 3}
+  - {fileID: 8300000, guid: e0d6b16ffe950a748a90d0a7769d72dc, type: 3}
+  - {fileID: 8300000, guid: 5754c68f842c8984c82be0637d0b6e8a, type: 3}
+  sound_pig_Hurt: {fileID: 8300000, guid: 9944a41691bb0ec45afc06e978294add, type: 3}
+  sound_pig_Dead: {fileID: 8300000, guid: c379d09a639ac864eac735739e2c0b79, type: 3}
 --- !u!65 &1401540855
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10384,7 +10406,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401540850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.703, y: 1.232, z: 25.093}
+  m_LocalPosition: {x: 24.173, y: 0.042, z: 28.556}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1219051191}
@@ -11277,8 +11299,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 939970b750331394f9379f2aafff2543, type: 3}
   - name: Rock_Destroy
     clip: {fileID: 8300000, guid: 217fa5643cf00d140a10ca6286f92d55, type: 3}
-  - name: 
-    clip: {fileID: 0}
+  - name: Animal_Hit
+    clip: {fileID: 8300000, guid: 455e484b76c389d43af3f98ab6cab366, type: 3}
   - name: 
     clip: {fileID: 0}
   - name: 
