@@ -438,7 +438,7 @@ MonoBehaviour:
   isHand: 0
   isAxe: 0
   isPickaxe: 1
-  range: 5
+  range: 10
   damage: 10
   workSpeed: 10
   attackDelay: 1.8
@@ -1124,7 +1124,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 850265920}
-        m_MethodName: ClickExit
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2164,7 +2164,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437300114}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.6, y: -0.52, z: 0.29}
+  m_LocalPosition: {x: -0.09, y: -0.56, z: 0.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 92056990}
@@ -2869,7 +2869,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642069391}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.2, y: -0.53, z: 1.07}
+  m_LocalPosition: {x: -0.2, y: -0.539, z: 0.695}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 631182665}
@@ -3541,9 +3541,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 850265918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2d441a8a46fd994b96ae3c34186e674, type: 3}
+  m_Script: {fileID: 11500000, guid: 5dd4ac560dae3dd4bbf2865a7374026c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  go_Base: {fileID: 82627841}
 --- !u!1 &875616848
 GameObject:
   m_ObjectHideFlags: 0
@@ -9979,7 +9980,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 850265920}
-        m_MethodName: ClickLoad
+        m_MethodName: Load
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11189,9 +11190,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.444
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -11305,7 +11306,9 @@ MonoBehaviour:
     clip: {fileID: 0}
   - name: 
     clip: {fileID: 0}
-  bgmSounds: []
+  bgmSounds:
+  - name: BGM1
+    clip: {fileID: 8300000, guid: 41c30371244903d41809b05d726bd536, type: 3}
 --- !u!4 &1427073065
 Transform:
   m_ObjectHideFlags: 0
@@ -11409,7 +11412,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 850265920}
-        m_MethodName: ClickSave
+        m_MethodName: Save
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18917,9 +18920,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2111878836}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f289e7a3dbf22b745b1e5f4a9746f814, type: 3}
+  m_Script: {fileID: 11500000, guid: ab410dc4ff078274b91a5750312b9498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorImg: {fileID: 2800000, guid: eed2f64ccb0ad9940a4be0b5d5d0b9d6, type: 3}
 --- !u!114 &2111878838
 MonoBehaviour:
   m_ObjectHideFlags: 0

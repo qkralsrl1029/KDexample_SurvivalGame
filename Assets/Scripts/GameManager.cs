@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static bool canPlayerMove = true;
     public static bool isOpenInventory = false;
+    public static bool isPause = false;
 
     [SerializeField] Texture2D cursorImg;    
 
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isOpenInventory)
+        if (isOpenInventory || isPause)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

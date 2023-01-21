@@ -37,6 +37,14 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         playSoundName = new string[audioSourceEffects.Length];
+
+        PlayBGM();
+    }
+
+    public void PlayBGM()
+    {
+        audioSourceBgm.clip = bgmSounds[0].clip;
+        audioSourceBgm.Play();
     }
 
     public void PlaySE(string _name)

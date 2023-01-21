@@ -4,19 +4,14 @@ using UnityEngine;
 
 public abstract class CloseWeaponController : MonoBehaviour
 {
-    // 미완성 클래스 = 추상 클래스.
-
-
+    #region protected vars
     // 현재 장착된 Hand형 타입 무기.
     [SerializeField]
     protected CloseWeapon currentCloseWeapon;
-
-    // 공격중??
     protected bool isAttack = false;
     protected bool isSwing = false;
-
     protected RaycastHit hitInfo;
-
+    #endregion
 
     protected void TryAttack()
     {
@@ -48,7 +43,6 @@ public abstract class CloseWeaponController : MonoBehaviour
     }
 
 
-    // 미완성 = 추상 코루틴.
     protected abstract IEnumerator HitCoroutine();
 
 

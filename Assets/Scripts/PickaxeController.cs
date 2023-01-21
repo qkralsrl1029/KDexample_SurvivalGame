@@ -25,20 +25,18 @@ public class PickaxeController : CloseWeaponController
     {
         while (isSwing)
         {
-            if (CheckObject())
+            if (!CheckObject())
+                continue;
+            if (hitInfo.transform.tag == "Rock")
+                hitInfo.transform.GetComponent<Rock>().Mining();
+            else if (hitInfo.transform.tag == "WeakAnimal")
             {
-                if (hitInfo.transform.tag == "Rock")
-                    hitInfo.transform.GetComponent<Rock>().Mining();
-                else if (hitInfo.transform.tag == "WeakAnimal")
-                {
-                    SoundManager.instance.PlaySE("Animal_Hit");
-                    hitInfo.transform.GetComponent<Pig>().Damage(1, transform.position);
-                }
-                isSwing = false;
-                Debug.Log(hitInfo.transform.name);
+                SoundManager.instance.PlaySE("Animal_Hit");
+                hitInfo.transform.GetComponent<Pig>().Damage(1, transform.position);
             }
-            yield return null;
+            isSwing = false;
         }
+        yield return null;
     }
 
     public override void CloseWeaponChange(CloseWeapon _closeWeapon)
